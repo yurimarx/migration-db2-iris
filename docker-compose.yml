@@ -1,0 +1,25 @@
+version: '3.7'
+services:
+    db2:
+      build:
+        context: ./db2
+      container_name: db2
+      privileged: true
+      ports:
+      - "50000:50000"
+      environment:
+      - DB2INST1_PASSWORD=password
+      - SAMPLEDB=true
+      - DB2
+      - LICENSE=accept
+    iris:
+      build: 
+        context: .
+        dockerfile: Dockerfile
+      restart: always
+      ports: 
+        - 1972:1972
+        - 52773:52773
+        - 53773:53773
+      volumes:
+        - ./:/irisrun/repo
