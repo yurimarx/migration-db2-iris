@@ -10,6 +10,9 @@ services:
       - DB2INST1_PASSWORD=password
       - LICENSE=accept
       - DBNAME=sample
+      - SAMPLEDB=true
+      volumes:
+      - db2_data:/database
     iris:
       build:
         context: .
@@ -23,3 +26,5 @@ services:
         - 53773
       volumes:
         - ./:/home/irisowner/dev
+volumes:
+  db2_data:
