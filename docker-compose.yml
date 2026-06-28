@@ -11,13 +11,15 @@ services:
       - LICENSE=accept
       - DBNAME=sample
     iris:
-      build: 
+      build:
         context: .
         dockerfile: Dockerfile
       restart: always
-      ports: 
+      environment:
+        - ISC_CPF_MERGE_FILE=/home/irisowner/dev/merge.cpf
+      ports:
         - 1972:1972
-        - 52773:52773
-        - 53773:53773
+        - 52773
+        - 53773
       volumes:
-        - ./:/irisrun/repo
+        - ./:/home/irisowner/dev
